@@ -1,0 +1,6 @@
+<div id="<%= dom_id line_item %>">
+<tr>
+	<td><%= line_item.quantity %> &times;</td>
+	<td><%= line_item.store.name %></td>
+	<td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
+</tr>

@@ -1,0 +1,44 @@
+<nav id="navigation">
+      <!-- container -->
+      <div class="container">
+        <!-- responsive-nav -->
+        <div id="responsive-nav">
+          <!-- NAV -->
+          <ul class="main-nav nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+
+            <li>
+              <% if session[:admin]%>
+              <a href="/admin/logout" >Admin Logout </a>
+              <% else%>
+              <a href="/admin/login" >Admin Login </a>
+              <% end %>
+            </li>
+          </ul>
+          <!-- /NAV -->
+        </div>
+        <!-- /responsive-nav -->
+      </div>
+      <!-- /container -->
+    </nav>
+    <!-- /NAVIGATION -->
+<div class="section" id="helloguys">
+    <h1>Admin Login </h1>
+<%=form_with url: "/admin/login", method: :post do |form| %> 
+<div class="field">
+    <%= form.label :username%>
+    <%= form.text_field :username%>
+</div>
+
+<div class="field">
+    <%= form.label :password%>
+    <%= form.password_field :password%>
+</div>
+
+<div class="actions">
+    <%= form.submit "Admin Login"%>
+</div>
+
+<% end %>
+    </div>
+

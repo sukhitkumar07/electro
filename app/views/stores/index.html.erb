@@ -1,0 +1,40 @@
+
+<nav id="navigation">
+      <!-- container -->
+      <div class="container">
+        <!-- responsive-nav -->
+        <div id="responsive-nav">
+          <!-- NAV -->
+          <ul class="main-nav nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+
+            <li>
+              <% if session[:admin]%>
+              <a href="/admin/logout" >Admin Logout </a>
+              <% else%>
+              <a href="/admin/login" >Admin Login </a>
+              <% end %>
+            </li>
+          </ul>
+          <!-- /NAV -->
+        </div>
+        <!-- /responsive-nav -->
+      </div>
+      <!-- /container -->
+    </nav>
+    <!-- /NAVIGATION -->
+
+<p style="color: green"><%= notice %></p>
+
+<h1>Stores</h1>
+
+<div id="stores">
+  <% @stores.each do |store| %>
+    <%= render store %>
+    <p>
+      <%= link_to "Show this store", store %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New store", new_store_path %>

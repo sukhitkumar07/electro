@@ -1,0 +1,57 @@
+
+ 
+ <div class="search_bar">
+ <%= form_with url: "/gallary/search", method: :get do |form| %>
+                        <%= form.label :query, "Search for:" %>
+                        <%= form.text_field :keyword %>
+                        <%= form.submit "Search" %>
+                    <% end %>
+</div>
+  
+  <nav id="navigation">
+      <!-- container -->
+      <div class="container">
+        <!-- responsive-nav -->
+        <div id="responsive-nav">
+          <!-- NAV -->
+          <ul class="main-nav nav navbar-nav">
+            <li class="active"><a href="/gallary/index">Home</a></li>
+            <li><a href="#">Hot Deals</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">Laptops</a></li>
+            <li><a href="#">Smartphones</a></li>
+            <li><a href="#">Cameras</a></li>
+            <li><a><% if user_signed_in? %>
+                  <li><strong><%= current_user.email %></strong></li>
+                 <li> <%= link_to "Edit profile", edit_user_registration_path, class: "navbar-link" %> </li>
+                  <li><%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "navbar-link"  %></li>
+                <% else %>
+                  <li><%= link_to "Sign up", new_user_registration_path, class: "navbar-link"  %> </li>
+                  <li><%= link_to "Login", new_user_session_path, class: "navbar-link"  %></li></a></li>
+                <% end %>
+          </ul>
+          <!-- /NAV -->
+        </div>
+        <!-- /responsive-nav -->
+      </div>
+      <!-- /container -->
+    </nav>
+    <!-- /NAVIGATION -->
+<div  class="kuchh_bhi">
+
+<% count=0 %>
+<% @search_results.each do |product|%>
+
+<% if (count % 5) == 0%>
+
+<% end %>
+<% count+=1 %>
+<div ><%= image_tag product.product_image  %><br />
+<%= product.name %><br />
+Price : <%= product.price %><br />
+Description : <%= product.description %><br />
+<%=  button_to 'Add to Cart', line_items_path(:store_id => product.id)%>
+ </div>
+<% end %>
+
+    </div>

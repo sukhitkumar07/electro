@@ -1,0 +1,31 @@
+<div id="<%= dom_id store %>">
+
+<% if store.product_image %>
+<%= image_tag store.product_image, :height=>"150", :width=>"100"%>
+<% end %>
+  <p>
+    <strong>Name:</strong>
+    <%= store.name %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= store.price %>
+  </p>
+
+  <p>
+    <strong>Category:</strong>
+    <%= store.category %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= store.description %>
+  </p>
+
+  <p>
+    <strong>Product Type:</strong>
+    <%= store.product_type %>
+  </p>
+
+</div>
